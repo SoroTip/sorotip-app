@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/logo.svg" width="88" alt="SoroTip logo" />
+</p>
+
 # SoroTip App
 
 **On-chain tipping and creator monetization frontend for Stellar Soroban**
