@@ -12,6 +12,13 @@
 [![Stellar](https://img.shields.io/badge/Stellar-Soroban-brightgreen?logo=stellar)](https://stellar.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Drips Wave](https://img.shields.io/badge/Drips-Wave%20Program-8A2BE2)](https://drips.network/wave)
+[![Live App](https://img.shields.io/badge/Live-sorotip--app.vercel.app-F97316)](https://sorotip-app.vercel.app)
+
+## Preview
+
+**Live at [sorotip-app.vercel.app](https://sorotip-app.vercel.app)**
+
+![SoroTip homepage screenshot](./assets/screenshot-home.png)
 
 ## What is SoroTip
 
