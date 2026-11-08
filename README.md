@@ -60,6 +60,38 @@ profiles, Explore) work immediately.
 | `NEXT_PUBLIC_CONTRACT_ID` | The deployed SoroTip contract's id (`C...`). Required — pages show a "not configured" state until this is set. |
 | `NEXT_PUBLIC_RPC_URL` | Soroban RPC endpoint. Defaults to the public testnet RPC if unset. |
 
+## Testing
+
+```bash
+npm run lint        # ESLint
+npm run typecheck   # tsc --noEmit
+npm run build       # production build
+npm run test:e2e    # Playwright, 375px viewport, screenshots in test-results/screenshots/
+```
+
+All four run in CI on every push/PR to `main` (`.github/workflows/test.yml`) — the
+`typecheck, lint, build` job twice: once against no configured contract (the
+state a fresh clone starts in) and the Playwright job against a real,
+already-deployed testnet contract
+([`CBRFZJZIEY5X3YFDU475TM6IPHV6HXWAKXVJMFV6NKWISUH4ZRICN4FR`](https://stellar.expert/explorer/testnet/contract/CBRFZJZIEY5X3YFDU475TM6IPHV6HXWAKXVJMFV6NKWISUH4ZRICN4FR),
+public on-chain data, not a secret).
+
+What this verifies: the app builds and typechecks cleanly, `/tip/[address]`
+renders without a connected wallet (including the real "creator not found"
+state against live RPC), the wallet-gated pages (Dashboard, History) show a
+clear connect-wallet prompt instead of erroring, and every page lays out
+without horizontal overflow at a 375px viewport (Chromium only — see below).
+
+What this does **not** verify, and is still outstanding:
+- A real installed Freighter extension in a real browser.
+- Real iOS Safari / Android Chrome rendering — the Playwright suite only has
+  Chromium installed here and simulates a 375px viewport with it, not an
+  actual WebKit/mobile browser engine.
+- Whether the production Vercel deployment at sorotip-app.vercel.app
+  currently has `NEXT_PUBLIC_CONTRACT_ID` set to a live contract — the
+  screenshot above is genuine (not staged), but was taken in September and
+  may not reflect the current production environment variables.
+
 ## Contributing via Drips Wave
 
 This repo is part of the [Stellar Wave Program](https://drips.network/wave)
